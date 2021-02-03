@@ -1,0 +1,35 @@
+<main class="form-signin">
+    <form id="loginForm" method="post" #loginForm = "ngForm" (ngSubmit)="onSubmitLoginForm(loginForm)">
+      <h1 class="h3 mb-3 fw-normal">FamilyTree sign in</h1>
+      <label for="inputEmail" class="visually-hidden">Email address</label>
+      <input type="email" 
+              [(ngModel)] = "model.inputEmail"
+              [pattern] = "emailPattern"
+              id="inputEmail" 
+              name="inputEmail" 
+              class="form-control" 
+              [ngClass] = "{
+                'is-invalid': inputEmailModel.invalid && loginForm.submitted,
+                'is-valid': inputEmailModel.valid && loginForm.submitted
+              }"
+              placeholder="Email address" 
+              #inputEmailModel = "ngModel"
+              required>
+      <label for="inputPassword" class="visually-hidden">Password</label>
+      <input type="password" 
+             id="password"
+             name="password" 
+             [(ngModel)] = "model.inputPassword"
+             #inputPasswordModel = "ngModel"
+             class="form-control" 
+             [ngClass] = "{
+              'is-invalid': inputPasswordModel.invalid && loginForm.submitted,
+              'is-valid': inputPasswordModel.valid && loginForm.submitted
+            }"
+             placeholder="Password"
+             required>
+     
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted text-center">© 2021 Jyoti Pathania</p>
+    </form>
+  </main>
